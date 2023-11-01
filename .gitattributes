@@ -1,2 +1,2 @@
-README.md linguist-generated=true
-*.md linguist-language=Dart
+* linguist-vendored
+*.dart linguist-vendored=false
