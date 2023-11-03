@@ -10,10 +10,22 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   int currentIndex = 3;
 
-  void searchMessage() {}
+  var items = MessagesModel.messages;
+
+  void searchMessages(String result) {
+    setState(() {
+      items = MessagesModel.messages.where((element) {
+        final contactMatches =
+            element.contactName.toLowerCase().contains(result.toLowerCase());
+        final messageBodyMatches =
+            element.messageBody.toLowerCase().contains(result.toLowerCase());
+        return contactMatches || messageBodyMatches;
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +45,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
               icon: Image.asset(
                 "lib/assets/camera.png",
                 color: Colors.blueAccent,
-                height: 24,
+                height: 26,
               )),
           IconButton(
               onPressed: () {},
@@ -155,35 +167,39 @@ class _ChatsScreenState extends State<ChatsScreen> {
   SliverList displayMessagesListview() {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
+        childCount: items.length,
         (context, index) {
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: ClipOval(
-                      child: Image.asset(
-                        MessagesModel.messages[index].imagePath,
-                        fit: BoxFit.fill,
-                        width: 60,
-                        height: 60,
+              InkWell(
+                onTap: () => debugPrint("Card tapped"),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: ClipOval(
+                        child: Image.asset(
+                          items[index].imagePath,
+                          fit: BoxFit.fill,
+                          width: 60,
+                          height: 60,
+                        ),
                       ),
                     ),
-                  ),
-                  title: Text(
-                    MessagesModel.messages[index].contactName,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  subtitle: Text(
-                    MessagesModel.messages[index].messageBody,
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                  trailing: Text(
-                    MessagesModel.messages[index].contactTime,
-                    style: const TextStyle(color: Colors.blueAccent),
+                    title: Text(
+                      items[index].contactName,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    subtitle: Text(
+                      items[index].messageBody,
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                    trailing: Text(
+                      items[index].contactTime,
+                      style: const TextStyle(color: Colors.blueAccent),
+                    ),
                   ),
                 ),
               ),
@@ -194,7 +210,6 @@ class _ChatsScreenState extends State<ChatsScreen> {
             ],
           );
         },
-        childCount: 10, // Change this to the number of items you have
       ),
     );
   }
@@ -203,12 +218,16 @@ class _ChatsScreenState extends State<ChatsScreen> {
     return Expanded(
       child: Container(
         height: 40,
-        padding: EdgeInsets.only(left: 40),
+        padding: const EdgeInsets.only(left: 40),
         child: TextField(
+          onChanged: (value) {
+            searchMessages(value);
+          },
+          autocorrect: false,
           maxLines: null,
           controller: _searchController,
           decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
+              contentPadding: const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
               isDense: true,
               hintText: "Search",
               hintStyle: const TextStyle(

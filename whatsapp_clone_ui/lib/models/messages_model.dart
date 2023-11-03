@@ -8,31 +8,32 @@ class MessagesModel {
       this.contactName, this.messageBody, this.contactTime, this.imagePath);
 
   static List<MessagesModel> messages = [
-    MessagesModel("Aishwarya Kasthala", "Hi How are you? ", "6:40 pm",
+    MessagesModel("Aishwarya Kasthala", "You are a genius", "6:40 pm",
         "lib/assets/aish-dp.jpg"),
+    MessagesModel("Dad", "You can do it!", "5:00 pm", "lib/assets/shiva.jpg"),
     MessagesModel(
-        "Rahul Kasthala", "Hi Whatsup? ", "5:30 pm", "lib/assets/aish-pic.jpg"),
+        "Amma", "Take care, jagratta!", "4:30 pm", "lib/assets/shiva-2.jpeg"),
     MessagesModel(
-        "Venkat Kasthala", "Take care ", "5:00 pm", "lib/assets/aish-pic2.jpg"),
+        "Rahul", "Hi bujji, whatsup? ", "4:00 pm", "lib/assets/wallpaper.jpg"),
     MessagesModel(
-        "Anu Kasthala", "Love you amma ", "4:30 pm", "lib/assets/aish.png"),
+        "Abhi", "Hi eh, ssup? ", "3:30 pm", "lib/assets/wallpaper-2.jpg"),
     MessagesModel(
-        "Abhigna", "Hi em dng? ", "4:00 pm", "lib/assets/aish-dp.jpg"),
-    MessagesModel("Jaya", "bodi ssup? ", "3:30 pm", "lib/assets/aish-pic.jpg"),
+        "Jaya", "Bodi, em dng?", "5:30 pm", "lib/assets/shiva-fin.jpeg"),
     MessagesModel("Ajay", "Hey Aishu, em chestunav? ", "3:00 pm",
-        "lib/assets/aish-pic2.jpg"),
-    MessagesModel("Sunny", "Bondam wassup?", "2:30 pm", "lib/assets/aish.png"),
-    MessagesModel("Suppi", "em dng eh? ", "2:00 pm", "lib/assets/aish-dp.jpg"),
+        "lib/assets/Birthday.png"),
+    MessagesModel(
+        "Sunny", "Bondam wassup?", "2:30 pm", "lib/assets/shiva-3.jpeg"),
+    MessagesModel(
+        "Suppi", "em dng eh? ", "2:00 pm", "lib/assets/wallpaper.jpg"),
     MessagesModel("Three musketeers", "Check this out!! ", "1:30 pm",
-        "lib/assets/aish-pic.jpg"),
+        "lib/assets/shiva-2.jpeg"),
     MessagesModel("Cousins group", "How are you all? ", "1:00 pm",
-        "lib/assets/aish-pic2.jpg"),
-    MessagesModel("Ammamma", "the best ", "12:30 pm", "lib/assets/aish.png"),
+        "lib/assets/shiva-3.jpeg"),
+    MessagesModel("Ammamma", "The best ", "12:30 pm", "lib/assets/shiva.jpg"),
+    MessagesModel("Amulya", "Hi akkai ", "12:00 pm", "lib/assets/Birthday.png"),
     MessagesModel(
-        "Amulya akka", "Hi akkai ", "12:00 pm", "lib/assets/aish-dp.jpg"),
+        "Aamu", "enti sangatulu ", "11:30 am", "lib/assets/shiva-fin.jpeg"),
     MessagesModel(
-        "Aamukta", "enti sangatulu ", "11:30 am", "lib/assets/aish-pic2.jpg"),
-    MessagesModel("Random name", "Unknown Unknown? ", "11:00 am",
-        "lib/assets/aish-pic.jpg"),
+        "Random name", "Unknown Unknown? ", "11:00 am", "lib/assets/shiva.jpg"),
   ];
 }
